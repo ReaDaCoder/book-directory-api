@@ -1,0 +1,4 @@
+Display UI
+User will see the landing page. The user will see the a form where they can enter details of the book, which will then be stored in the database.
+The user will have options to add, deleted and update details of the book.
+ 
