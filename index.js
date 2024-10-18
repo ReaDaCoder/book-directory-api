@@ -2,6 +2,9 @@ import express from 'express';
 import multer from 'multer';
 const upload = multer();
 import { v4 as uuidv4 } from 'uuid';
+import fs from 'node:fs';
+
+
 
 //import http from require('http');
 
@@ -42,9 +45,26 @@ app.post('/books', upload.none(), (req, res) => {
     res.send(`${title} has been added to the shopping list`);
   })
 
+  fs.readFile('/books', 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log(data);
+  });
+
+  app.delete('/books', (req, res) => {
+    const { id } = req.params;
+  
+  
+    res.send(`${id} deleted successfully from database`);
+  })
+
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
 });
+
+
 
 
 
