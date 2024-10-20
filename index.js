@@ -53,10 +53,11 @@ app.post('/books', upload.none(), (req, res) => {
     console.log(data);
   });
 
-  app.delete('/books', (req, res) => {
+  app.delete('/books/:id', (req, res) => {
     const { id } = req.params;
   
-  
+    books = books.filter((user) => user.id !== id)
+
     res.send(`${id} deleted successfully from database`);
   })
 
