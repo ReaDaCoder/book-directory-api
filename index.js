@@ -3,6 +3,7 @@ import multer from 'multer';
 const upload = multer();
 import { v4 as uuidv4 } from 'uuid';
 import fs from 'node:fs';
+import { finished } from 'node:stream/promises';
 
 
 
@@ -43,6 +44,12 @@ app.post('/books', upload.none(), (req, res) => {
     bookInfo.push({title, author,publisher,date,ISBN, id: uuidv4() });
   
     res.send(`${title} has been added to the shopping list`);
+
+    let storedBooks = JSON.stringify(books, null, 2);
+    fs.writeFile('books.json'. storedBooks, finished);
+    function finished(err){
+      console.log('all set.');
+    }
   })
 
   fs.readFile('/books', 'utf8', (err, data) => {
