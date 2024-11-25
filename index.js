@@ -43,7 +43,7 @@ app.post('/books', upload.none(), (req, res) => {
   
     bookInfo.push({title, author,publisher,date,ISBN, id: uuidv4() });
   
-    res.send(`${title} has been added to the shopping list`);
+    res.send(`${title} has been added to the book directory list`);
 
     let storedBooks = JSON.stringify(books, null, 2);
     fs.writeFile('books.json'. storedBooks, finished);
