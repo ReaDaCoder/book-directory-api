@@ -26,7 +26,7 @@ const router = express.Router();
 
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 
 let bookInfo = [
@@ -39,6 +39,7 @@ app.get('/books', (req, res) => {
 
 
 app.post('/books', upload.none(), (req, res) => {
+  console.log(req.body)
     const {title, author,publisher,date,ISBN} = req.body;
   
     bookInfo.push({title, author,publisher,date,ISBN, id: uuidv4() });
